@@ -28,7 +28,7 @@ spec:
 {{- end }}
   rules:
   {{- range .Values.ingress.hosts }}
-    - host: {{ printf "%s-$s . $ingresshost }}
+    - host: {{ printf "%s-$s" . $ingresshost }}
       http:
         paths:
           - path: {{ $ingressPath }}
