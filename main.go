@@ -13,7 +13,7 @@ func handler(w http.ResponseWriter, r *http.Request) {
 	} else {
 		name = "world"
 	}
-	fmt.Fprintf(w, "Hello louise %s!", name)
+	fmt.Fprintf(w, "Hello benj %s!", name)
 }
 
 func main() {
