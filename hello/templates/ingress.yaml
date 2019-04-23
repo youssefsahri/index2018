@@ -1,6 +1,7 @@
 {{- if .Values.ingress.enabled -}}
 {{- $fullName := include "hello.fullname" . -}}
 {{- $ingressPath := .Values.ingress.path -}}
+{{- $ingresshost := .Values.image.tag -}}
 apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
@@ -27,7 +28,7 @@ spec:
 {{- end }}
   rules:
   {{- range .Values.ingress.hosts }}
-    - host: {{ . }}
+    - host: {{ printf "%s-$s . $ingresshost }}
       http:
         paths:
           - path: {{ $ingressPath }}
