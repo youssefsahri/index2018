@@ -21,14 +21,14 @@ spec:
   {{- range .Values.ingress.tls }}
     - hosts:
       {{- range .hosts }}
-        - {{ . }}
+        - {{ printf "hello.%s.%s" $ingresshost . }}
       {{- end }}
       secretName: {{ .secretName }}
   {{- end }}
 {{- end }}
   rules:
   {{- range .Values.ingress.hosts }}
-    - host: {{ printf "%s.%s.nip.io" . $ingresshost }}
+    - host: {{ printf "hello.%s.%s" $ingresshost . }}
       http:
         paths:
           - path: {{ $ingressPath }}
